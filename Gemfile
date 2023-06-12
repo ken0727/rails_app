@@ -35,6 +35,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'jquery-rails'
 gem 'sorcery'
+gem 'pry-byebug'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

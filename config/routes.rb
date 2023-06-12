@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 root 'static_pages#top'
 # config/routes.rb
 get '/users/new', to: 'users#new', as: 'new_user'
-get '/login', to: 'sessions#new', as: 'login'
+get '/login', to: 'sessions#create', as: 'login'
 delete '/logout', to: 'sessions#destroy', as: 'logout'
 resources :users
 

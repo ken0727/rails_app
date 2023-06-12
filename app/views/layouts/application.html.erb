@@ -9,15 +9,21 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
+<body>
+<% flash.each do |type, message| %>
+    <%= content_tag :div, message, class: "flash #{type}" %>
+  <% end %>
 
-    <%= yield %>
+  <% if logged_in? %>
+ 
+    <%= render 'shared/header' %>
+  <% else %>
+    <%= render 'shared/before_login_header' %>
+  <% end %>
 
-    <%= render 'shared/footer' %>
-  </body>
+  <%= yield %>
+
+  <%= render 'shared/footer' %>
+</body>
+
 </html>
