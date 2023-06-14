@@ -5,25 +5,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
-<body>
-<% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: "flash #{type}" %>
-  <% end %>
+  <body>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
 
-  <% if logged_in? %>
- 
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/before_login_header' %>
-  <% end %>
+    <%= yield %>
 
-  <%= yield %>
+    <%= render 'shared/footer' %>
 
-  <%= render 'shared/footer' %>
-</body>
-
+  </body>
 </html>

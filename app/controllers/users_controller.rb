@@ -6,17 +6,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      auto_login(@user) # ユーザー作成
       redirect_to login_path
     else
-      render 'new' # ユーザー作成に失敗した場合は、新規登録画面を再表示する
+      render :new
     end
   end
 
   private
 
   def user_params
-  params.require(:user).permit(:last_name, :first_name, :email, :password)
+    params.require(:user).permit(:email, :password, :password_confirmation, :last_name, :first_name)
   end
-
 end
