@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    users:
+      new:
+        title: 'ユーザー登録'
+        last_name: '姓'
+        first_name: '名'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        submit: "登録"
+        go_to_login: "ログインページへ"

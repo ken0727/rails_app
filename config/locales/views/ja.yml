@@ -1,0 +1,12 @@
+ja:
+  views:
+    user_sessions:
+      new:
+        title: 'ログイン'
+        email_label: 'メールアドレス'
+        password_label: 'パスワード'
+        login_button: 'ログイン'
+        signup_link: '登録ページへ'
+        forgot_password_link: 'パスワードをお忘れの方はこちら'
+
+
