@@ -11,6 +11,21 @@ ja:
       create:
         success: "ログインしました"
         fail: "ログインに失敗しました"
-        logout: "ログアウトしました"
-
+      destroy:
+        success: "ログアウトしました"
+  users:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+    create:
+      success: '登録しました'
+      fail: '登録に失敗しました'
+  boards:
+    index:
+      title: '掲示板一覧'
+    shared:
+      before_login_header:
+        login_link: 'ログイン'
+        signup_link: '登録'
 
