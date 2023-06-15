@@ -24,8 +24,16 @@ ja:
   boards:
     index:
       title: '掲示板一覧'
-    shared:
-      before_login_header:
-        login_link: 'ログイン'
-        signup_link: '登録'
+  shared:
+    before_login_header:
+      login_link: 'ログイン'
+  boards:
+    index:
+      board_title: "掲示板"
+      board_index: '掲示板一覧'
+      board_create: '掲示板作成'
+      bookmarks: "ブックマーク一覧"
+      profile: "プロフィール"
+      logout: "ログアウト"
+
 

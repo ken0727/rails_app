@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    flash[:danger] = t('views.user_sessions.create.success')
+    flash[:danger] = t('views.user_sessions.destroy.success')
     redirect_to root_path
   end
 end
