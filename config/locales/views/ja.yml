@@ -8,5 +8,9 @@ ja:
         login_button: 'ログイン'
         signup_link: '登録ページへ'
         forgot_password_link: 'パスワードをお忘れの方はこちら'
+      create:
+        success: "ログインしました"
+        fail: "ログインに失敗しました"
+        logout: "ログアウトしました"
 
 
