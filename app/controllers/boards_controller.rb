@@ -1,7 +1,10 @@
 class BoardsController < ApplicationController
   def index
     # ログインしていない場合はログイン画面にリダイレクト
-    redirect_to login_path unless logged_in?
+    unless logged_in?
+      redirect_to login_path
+      flash[:danger] = "ログインしてください"
+    end
     @boards = Board.all
   end
 end

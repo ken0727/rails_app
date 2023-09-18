@@ -35,5 +35,8 @@ ja:
       bookmarks: "ブックマーク一覧"
       profile: "プロフィール"
       logout: "ログアウト"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
 
 

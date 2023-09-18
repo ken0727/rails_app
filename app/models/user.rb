@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { maximum: 255 }
 
   has_many :boards
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
