@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
 
     if @user
       flash[:success] = t('views.user_sessions.create.success')
-      redirect_back_or_to root_path
+      redirect_back_or_to boards_path
     else
       flash.now[:danger] = t('views.user_sessions.create.fail')
       render :new

@@ -14,7 +14,7 @@
       <%= link_to t("boards.index.board_title"), "#", class: "nav-link dropdown-toggle", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
 
           <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to t("boards.index.board_index"), '#', class: 'dropdown-item' %>
+            <%= link_to t("boards.index.board_index"), boards_path, class: 'dropdown-item' %>
             <%= link_to t("boards.index.board_create"), '#', class: 'dropdown-item' %>
           </div>
         </li>
