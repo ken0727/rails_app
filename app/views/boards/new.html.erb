@@ -23,6 +23,20 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <h1><%= t('views.boards.new.title') %></h1>
+
+            <!-- エラーメッセージ表示エリア -->
+      <div class="error-messages">
+        <% if @board.errors.any? %>
+          <div class="alert alert-danger">
+            
+              <% @board.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+          
+          </div>
+        <% end %>
+      </div>
+
       <%= form_with(model: @board, url: boards_path, html: { class: 'new_board' }, local: true) do |form| %>
 
         <div class="form-group">
@@ -38,8 +52,8 @@
         <div class="form-group">
           <%= form.submit t('views.boards.new.create_button'), class: 'btn btn-primary', data: { disable_with: '作成' } %>
         </div>
-
       <% end %>
+
     </div>
   </div>
 </div>

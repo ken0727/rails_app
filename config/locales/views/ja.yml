@@ -1,4 +1,38 @@
 ja:
+  activerecord:
+    models:
+      board: "掲示板"
+    attributes:
+      board:
+        title: "タイトル"
+        body: "本文"
+      user:
+        last_name: "姓"
+        first_name: "名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "は3文字以上で入力してください"
+            password_confirmation:
+              blank: "を入力してください"
+            email:
+              blank: "を入力してください"
+            first_name:
+              blank: "を入力してください"
+            last_name:
+              blank: "を入力してください"
+        board:
+          title:
+            blank: "を入力してください" # タイトルの空白エラー
+            too_long: "は%{count}文字以内で入力してください" # タイトルの文字数オーバーエラー
+          body:
+            blank: "を入力してください" # 本文の空白エラー
+            too_long: "は%{count}文字以内で入力してください" # 本文の文字数オーバーエラー
   views:
     user_sessions:
       new:
@@ -23,6 +57,7 @@ ja:
         fail: '登録に失敗しました'
     shared:
       _before_login_header:
+        login_link: 'ログイン'
     boards:
       index:
         login_link: 'ログイン'
@@ -45,5 +80,3 @@ ja:
     time:
       formats:
         default: "%Y/%m/%d %H:%M"
-
-
