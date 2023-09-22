@@ -6,7 +6,8 @@ root 'static_pages#top'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  resources :boards
+  resources :boards, only: %i[new index create]
   resources :users, only: %i[new create]
+  
   
 end

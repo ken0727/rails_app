@@ -13,30 +13,37 @@ ja:
         fail: "ログインに失敗しました"
       destroy:
         success: "ログアウトしました"
-  users:
-    new:
-      title: 'ログイン'
-      to_register_page: '登録ページへ'
-      password_forget: 'パスワードをお忘れの方はこちら'
-    create:
-      success: '登録しました'
-      fail: '登録に失敗しました'
-  boards:
-    index:
-      title: '掲示板一覧'
-  shared:
-    before_login_header:
-      login_link: 'ログイン'
-  boards:
-    index:
-      board_title: "掲示板"
-      board_index: '掲示板一覧'
-      board_create: '掲示板作成'
-      bookmarks: "ブックマーク一覧"
-      profile: "プロフィール"
-      logout: "ログアウト"
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M"
+    users:
+      new:
+        title: 'ログイン'
+        to_register_page: '登録ページへ'
+        password_forget: 'パスワードをお忘れの方はこちら'
+      create:
+        success: '登録しました'
+        fail: '登録に失敗しました'
+    shared:
+      _before_login_header:
+    boards:
+      index:
+        login_link: 'ログイン'
+        board_title: "掲示板"
+        board_index: '掲示板一覧'
+        board_create: '掲示板作成'
+        bookmarks: "ブックマーク一覧"
+        profile: "プロフィール"
+        logout: "ログアウト"
+        nothing: "掲示板がありません"
+        login: "ログインしてください"
+      new:
+        title: "掲示板作成"
+        title_label: 'タイトル'
+        body_label: '本文'
+        create_button: "作成"
+      create:
+        success: "掲示板を作成しました"
+        fail: "掲示板を作成できませんでした"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M"
 
 

@@ -4,5 +4,5 @@ class Board < ApplicationRecord
   validates :body, presence: true, length: { maximum: 65535 }
 
   # Userモデルとのアソシエーション
-  belongs_to :user
+  belongs_to :user, optional: true
 end
