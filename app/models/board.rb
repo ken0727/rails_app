@@ -4,7 +4,7 @@ class Board < ApplicationRecord
 validates :title, presence: true, length: { maximum: 255 }
 validates :body, presence: true, length: { maximum: 65535 }
 
-
+  mount_uploader :board_image, BoardImageUploader
   # Userモデルとのアソシエーション
   belongs_to :user, optional: true
 end

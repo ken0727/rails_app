@@ -1,6 +1,10 @@
 <div id="board-id-<%= board.id %>">
   <div class="card">
-    <img class="card-img-top" src="/assets/board_placeholder.png" width="300" height="200" />
+    <% if board.board_image.present? %>
+      <%= image_tag board.board_image.url, class: "card-img-top", width: "300", height: "200" %>
+    <% else %>
+      <%= image_tag "board_placeholder.png", class: "card-img-top", width: "300", height: "200" %>
+    <% end %>
     <div class="card-body">
       <h4 class="card-title">
         <a href="#"><%= board.title %></a>
@@ -27,7 +31,6 @@
       </div>
       
       <p class="card-text"><%= board.body %></p>
-
     </div>
   </div>
 </div>

@@ -17,22 +17,20 @@
   </div>
 </div>
 ソースは下
--->
+------------------------->
 
 <div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <h1><%= t('views.boards.new.title') %></h1>
 
-            <!-- エラーメッセージ表示エリア -->
+      <!-- エラーメッセージ表示エリア -->
       <div class="error-messages">
         <% if @board.errors.any? %>
           <div class="alert alert-danger">
-            
-              <% @board.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-          
+            <% @board.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -48,6 +46,14 @@
           <%= form.label :body, t('views.boards.new.body_label') %>
           <%= form.text_area :body, class: 'form-control', id: 'board_body', style: 'height: 200px' %>
         </div>
+
+        <div class="form-group">
+          <%= form.label :board_image, 'サムネイル' %>
+        </div>
+        <div class="form-group">
+          <%= form.file_field :board_image, required: false, accept: ".jpg, .jpeg, .png, .gif" %>
+        </div>
+        
 
         <div class="form-group">
           <%= form.submit t('views.boards.new.create_button'), class: 'btn btn-primary', data: { disable_with: '作成' } %>
