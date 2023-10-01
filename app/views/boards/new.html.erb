@@ -1,24 +1,4 @@
-<!-- 念のため残してる 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('views.boards.new.title') %></h1>
-      <%= form_with(model: @board, url: boards_path, html: { class: 'new_board' }, local: true) do |form| %>
-
-        <%= form.label :title, t('views.boards.new.title_label') %>
-        <%= form.text_field :title, class: 'form-control', id: 'board_title' %>
-
-        <%= form.label :body, t('views.boards.new.body_label') %>
-        <%= form.text_area :body, class: 'form-control', id: 'board_body', style: 'height: 200px' %>
-
-        <%= form.submit t('views.boards.new.create_button'), class: 'btn btn-primary', data: { disable_with: '作成' } %>
-      <% end %>
-    </div>
-  </div>
-</div>
-ソースは下
-------------------------->
-
+<% content_for :title, "掲示板作成 | RUNTEQ BOARD APP" %>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
