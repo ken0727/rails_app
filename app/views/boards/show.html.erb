@@ -1,0 +1,89 @@
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <h1>掲示板詳細</h1>
+      <!-- 掲示板内容 -->
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-3'>
+              <img class="card-img-top img-fluid" src="sample.jpg" width="300" height="200" />
+            </div>
+            <div class='col-md-9'>
+              <h3 style='display: inline;'>タイトル32</h3>
+              <ul class="list-inline">
+                <li class="list-inline-item">by 小野 凛</li>
+                <li class="list-inline-item">2019/05/09 17:11</li>
+              </ul>
+            </div>
+          </div>
+          <p>本文32</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- コメントフォーム -->
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+    <%= form_for [@board, Comment.new] do |f| %>
+      <%= f.label :body, 'コメント' %>
+      <%= f.text_area :body, class: 'form-control mb-3', rows: 4, placeholder: 'コメント' %>
+      <%= f.submit '投稿', class: 'btn btn-primary' %>
+    <% end %>
+
+
+    </div>
+  </div>
+
+
+<!-- コメントエリア -->
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+    <table id="js-table-comment" class="table">
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <tr id="comment-<%= comment.id %>">
+            <td style="width: 60px">
+              <!-- アバター -->
+              <img class="rounded-circle" src="<%= comment.user.avatar_url %>" width="50" height="50" />
+            </td>
+            <td>
+              <!-- 姓名 -->
+              <h3 class="small"><%= comment.user.full_name %></h3>
+              <!-- コメント内容 -->
+              <div id="js-comment-<%= comment.id %>">
+                <p><%= comment.body %></p>
+              </div>
+
+              <div class="text-right">
+                <% if comment.user == current_user %> <!-- ログインユーザーがコメントの投稿者であるかを確認 -->
+                  <!-- 編集ボタン -->
+                  <%= link_to "#", title: "編集" do %>
+                    <i class="fa fa-edit"></i>
+                  <% end %>
+                  <!-- 削除ボタン -->
+                  <%= link_to "#", method: :delete, data: { confirm: "本当に削除しますか？" }, title: "削除" do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div style="display: none;">
+                <textarea class="form-control mb-1"><%= comment.body %></textarea>
+                <button class="btn btn-light">キャンセル</button>
+                <button class="btn btn-success">更新</button>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="2">
+            <p>コメントはありません。</p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

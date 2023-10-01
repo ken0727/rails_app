@@ -11,8 +11,16 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   has_many :boards, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def avatar_url
+    # アバターのURLを生成する
+    # 例えば、Gravatar を使ってアバターを取得する場合
+     gravatar_id = Digest::MD5.hexdigest(email.downcase)
+     "https://www.gravatar.com/avatar/#{gravatar_id}"
   end
 end

@@ -8,6 +8,10 @@ root 'static_pages#top'
 
   resources :boards, only: %i[new index create]
   resources :users, only: %i[new create]
-  
+
+  resources :boards do
+  resources :comments
+
+  end
   
 end

@@ -7,4 +7,5 @@ validates :body, presence: true, length: { maximum: 65535 }
   mount_uploader :board_image, BoardImageUploader
   # Userモデルとのアソシエーション
   belongs_to :user, optional: true
+  has_many :comments, dependent: :destroy
 end

@@ -23,6 +23,22 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find(params[:id])
+    @comments = @board.comments.order(created_at: :desc) # 降順で並び替える
+  
+end
+
+def destroy
+  @board = Board.find(params[:id])
+  if @board.destroy
+    flash[:success] = "掲示板が削除されました。"
+  else
+    flash[:error] = "掲示板の削除に失敗しました。"
+  end
+  redirect_to boards_path
+end
+
   private
 
   def board_params

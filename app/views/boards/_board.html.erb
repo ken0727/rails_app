@@ -6,16 +6,19 @@
       <%= image_tag "board_placeholder.png", class: "card-img-top", width: "300", height: "200" %>
     <% end %>
     <div class="card-body">
-      <h4 class="card-title">
-        <a href="#"><%= board.title %></a>
-      </h4>
+    <h4 class="card-title">
+      <a href="<%= board_path(board) %>"><%= board.title %></a>
+    </h4>
+
       <div class='mr10 float-right'>
         <%= link_to '#', id: "button-edit-#{board.id}" do %>
           <%= icon 'fa', 'pen' %>
         <% end %>
-        <%= link_to '#', id: "button-delete-#{board.id}", method: :delete, data: { confirm: '' } do %>
-          <%= icon 'fas', 'trash' %>
-        <% end %>
+
+      <%= link_to board_path(board), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+        <%= icon 'fas', 'trash' %>
+      <% end %>
+
       </div>
       
       <!-- 投稿者の情報を別の行に表示 -->
