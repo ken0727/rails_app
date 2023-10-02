@@ -1,49 +1,77 @@
 class BoardsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
+
+  before_action :find_board, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
+
   def index
-    # ログインしていない場合はログイン画面にリダイレクト
-    if logged_in? == false
-      redirect_to login_path
-      flash[:danger] = t('views.boards.index.login') # ログインしてください
-    end
     @boards = Board.all
   end
 
   def new
     @board = Board.new
+    @button_label = t('views.boards.new.create_button')
   end
 
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      flash[:success] = t('views.boards.create.success') # 掲示板を作成しました
+      flash[:success] = t('views.boards.create.success')
       redirect_to boards_path
     else
-      flash.now[:danger] = t('views.boards.create.fail') # 掲示板を作成できませんでした
+      flash.now[:danger] = t('views.boards.create.fail')
       render :new
     end
   end
 
   def show
-    @board = Board.find(params[:id])
-    @comments = @board.comments.order(created_at: :desc) # 降順で並び替える
-  
-end
-
-def destroy
-  @board = Board.find(params[:id])
-  if @board.destroy
-    flash[:success] = "掲示板が削除されました。"
-  else
-    flash[:error] = "掲示板の削除に失敗しました。"
+    @comments = @board.comments.order(created_at: :desc)
+    @user = @board.user
   end
-  redirect_to boards_path
-end
+
+  def edit
+    @button_label = t('views.boards.edit.update_button')
+  end
+
+  def update
+    if @board.update(board_params)
+      flash[:success] = t('views.boards.update.success')
+      redirect_to board_path(@board)
+    else
+      flash.now[:danger] = t('views.boards.update.fail')
+      render :edit
+    end
+  end
+
+  def destroy
+    if @board.destroy
+      flash[:success] = t('views.boards.destroy.success')
+    else
+      flash[:error] = t('views.boards.destroy.fail')
+    end
+    redirect_to boards_path
+  end
 
   private
 
   def board_params
     params.require(:board).permit(:title, :body, :board_image)
   end
+
+  def require_login
+    unless logged_in?
+      redirect_to login_path
+      flash[:danger] = t('views.boards.index.login')
+    end
+  end
+
+  def find_board
+    @board = Board.find(params[:id])
+  end
+
+  def authorize_user
+    unless current_user == @board.user
+      raise ActiveRecord::RecordNotFound
+    end
+  end
 end
-
-

@@ -8,17 +8,21 @@
         <div class="card-body">
           <div class='row'>
             <div class='col-md-3'>
-              <img class="card-img-top img-fluid" src="sample.jpg" width="300" height="200" />
+              <% if @board.board_image.present? %>
+                <img class="card-img-top img-fluid" src="<%= @board.board_image.url %>" width="300" height="200" />
+              <% else %>
+                <img class="card-img-top img-fluid" src="<%= asset_path('board_placeholder.png') %>" width="300" height="200" />
+              <% end %>
             </div>
             <div class='col-md-9'>
-              <h3 style='display: inline;'>タイトル32</h3>
+              <h3 style='display: inline;'><%= @board.title %></h3>
               <ul class="list-inline">
-                <li class="list-inline-item">by 小野 凛</li>
-                <li class="list-inline-item">2019/05/09 17:11</li>
+                <li class="list-inline-item">by <%= @user.full_name %></li>
+                <li class="list-inline-item"><%= @board.created_at.strftime('%Y/%m/%d %H:%M') %></li>
               </ul>
             </div>
           </div>
-          <p>本文32</p>
+          <p><%= @board.body %></p> <!-- ここにboardのbodyを表示 -->
         </div>
       </article>
     </div>
@@ -29,11 +33,9 @@
     <div class="col-lg-8 offset-lg-2">
     <%= form_for [@board, Comment.new] do |f| %>
       <%= f.label :body, 'コメント' %>
-      <%= f.text_area :body, class: 'form-control mb-3', rows: 4, placeholder: 'コメント' %>
+      <%= f.text_area :body, class: 'form-control mb-3', rows: 2, placeholder: 'コメント' %>
       <%= f.submit '投稿', class: 'btn btn-primary' %>
     <% end %>
-
-
     </div>
   </div>
 

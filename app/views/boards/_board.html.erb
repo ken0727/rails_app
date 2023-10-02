@@ -6,21 +6,23 @@
       <%= image_tag "board_placeholder.png", class: "card-img-top", width: "300", height: "200" %>
     <% end %>
     <div class="card-body">
-    <h4 class="card-title">
-      <a href="<%= board_path(board) %>"><%= board.title %></a>
-    </h4>
+      <h4 class="card-title">
+        <a href="<%= board_path(board) %>"><%= board.title %></a>
+      </h4>
 
-      <div class='mr10 float-right'>
-        <%= link_to '#', id: "button-edit-#{board.id}" do %>
+      <!-- ユーザーが作成した掲示板であるかの確認 -->
+      <% if board.user == current_user %>
+        <div class='mr10 float-right'>
+        <%= link_to edit_board_path(board), id: "edit-button-#{board.id}" do %>
           <%= icon 'fa', 'pen' %>
         <% end %>
 
-      <%= link_to board_path(board), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
-        <%= icon 'fas', 'trash' %>
+        <%= link_to board_path(board), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "delete-button-#{board.id}" do %>
+          <%= icon 'fas', 'trash' %>
+        <% end %>
+        </div>
       <% end %>
 
-      </div>
-      
       <!-- 投稿者の情報を別の行に表示 -->
       <div>
         <i class="far fa-user"></i>

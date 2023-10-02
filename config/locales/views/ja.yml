@@ -59,6 +59,15 @@ ja:
       _before_login_header:
         login_link: 'ログイン'
     boards:
+      update:
+        success: "掲示板を更新しました"
+        fail: "掲示板の更新に失敗しました"
+      destroy:
+        success: "掲示板を削除しました"
+        fail: "削除に失敗しました"
+      edit:
+        update_button: "変更"
+        title: "掲示板編集"
       index:
         login_link: 'ログイン'
         board_title: "掲示板"

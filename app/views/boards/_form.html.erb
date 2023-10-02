@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+
+        <% if action_name == 'new' %>
+            <h1><%= t('views.boards.new.title') %></h1>
+        <% elsif action_name == 'edit' %>
+            <h1><%= t('views.boards.edit.title') %></h1>
+        <% end %>
+
+
+
+                <!-- フォームの制御 -->
+      <%= form_with(model: @board, local: true) do |form| %>
+        <div class="form-group">
+          <%= form.label :title, t('views.boards.new.title_label') %>
+          <%= form.text_field :title, class: 'form-control', id: 'board_title' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :body, t('views.boards.new.body_label') %>
+          <%= form.text_area :body, class: 'form-control', id: 'board_body', style: 'height: 200px' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :board_image, 'サムネイル' %>
+        </div>
+        <div class="form-group">
+          <%= form.file_field :board_image, required: false, accept: ".jpg, .jpeg, .png, .gif" %>
+        </div>
+        
+
+        <div class="form-group">
+            <%= form.submit t('views.boards.new.create_button'), class: 'btn btn-primary', data: { disable_with: '作成' } %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
