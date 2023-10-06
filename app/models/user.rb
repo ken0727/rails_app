@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :boards, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks
+  has_many :bookmarked_boards, through: :bookmarks, source: :board
 
   def full_name
     "#{first_name} #{last_name}"

@@ -8,4 +8,6 @@ validates :body, presence: true, length: { maximum: 65535 }
   # Userモデルとのアソシエーション
   belongs_to :user, optional: true
   has_many :comments, dependent: :destroy
+    has_many :bookmarks
+  has_many :users_who_bookmarked, through: :bookmarks, source: :user
 end

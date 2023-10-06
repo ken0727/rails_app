@@ -17,6 +17,17 @@
     @media screen and (max-width: 767px) {
       font-size: 2.0rem;
     }
+    
   }
 }
+
+.bookmark-link {
+  text-decoration: none;
+  color: #000; /* ☆ ボタンのデフォルトの色 */
+}
+
+.bookmark-link:hover {
+  color: #f39c12; /* ☆ ボタンのホバー時の色 */
+}
+
 

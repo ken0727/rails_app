@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
+    def bookmarks
+    @bookmarked_boards = current_user.bookmarked_boards
+  end
+
   private
 
   def user_params
