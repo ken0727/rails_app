@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RunteqNormal</title>
+    <title><%= content_for?(:title) ? yield(:title) : "RunteqNormal" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -16,8 +16,11 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
 
+    <%= render 'shared/flash_message' %>
+
     <%= yield %>
 
     <%= render 'shared/footer' %>
+
   </body>
 </html>

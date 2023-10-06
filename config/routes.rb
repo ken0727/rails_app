@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 root 'static_pages#top'
-# config/routes.rb
-get '/users/new', to: 'users#new', as: 'new_user'
-get '/login', to: 'sessions#new', as: 'login'
-delete '/logout', to: 'sessions#destroy', as: 'logout'
-resources :users
 
+  get 'login', to: 'user_sessions#new'
+  post 'login', to: 'user_sessions#create'
+  delete 'logout', to: 'user_sessions#destroy'
+
+  resources :boards, only: %i[new index create edit]
+  resources :users, only: %i[new create]
+
+  resources :boards do
+  resources :comments
+
+  end
+  
 end

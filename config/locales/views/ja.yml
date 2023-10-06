@@ -1,0 +1,91 @@
+ja:
+  activerecord:
+    models:
+      board: "掲示板"
+    attributes:
+      board:
+        title: "タイトル"
+        body: "本文"
+      user:
+        last_name: "姓"
+        first_name: "名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "は3文字以上で入力してください"
+            password_confirmation:
+              blank: "を入力してください"
+            email:
+              blank: "を入力してください"
+            first_name:
+              blank: "を入力してください"
+            last_name:
+              blank: "を入力してください"
+        board:
+          title:
+            blank: "を入力してください" # タイトルの空白エラー
+            too_long: "は%{count}文字以内で入力してください" # タイトルの文字数オーバーエラー
+          body:
+            blank: "を入力してください" # 本文の空白エラー
+            too_long: "は%{count}文字以内で入力してください" # 本文の文字数オーバーエラー
+  views:
+    user_sessions:
+      new:
+        title: 'ログイン'
+        email_label: 'メールアドレス'
+        password_label: 'パスワード'
+        login_button: 'ログイン'
+        signup_link: '登録ページへ'
+        forgot_password_link: 'パスワードをお忘れの方はこちら'
+      create:
+        success: "ログインしました"
+        fail: "ログインに失敗しました"
+      destroy:
+        success: "ログアウトしました"
+    users:
+      new:
+        title: 'ログイン'
+        to_register_page: '登録ページへ'
+        password_forget: 'パスワードをお忘れの方はこちら'
+      create:
+        success: '登録しました'
+        fail: '登録に失敗しました'
+    shared:
+      _before_login_header:
+        login_link: 'ログイン'
+    boards:
+      update:
+        success: "掲示板を更新しました"
+        fail: "掲示板の更新に失敗しました"
+      destroy:
+        success: "掲示板を削除しました"
+        fail: "削除に失敗しました"
+      edit:
+        update_button: "変更"
+        title: "掲示板編集"
+      index:
+        login_link: 'ログイン'
+        board_title: "掲示板"
+        board_index: '掲示板一覧'
+        board_create: '掲示板作成'
+        bookmarks: "ブックマーク一覧"
+        profile: "プロフィール"
+        logout: "ログアウト"
+        nothing: "掲示板がありません"
+        login: "ログインしてください"
+      new:
+        title: "掲示板作成"
+        title_label: 'タイトル'
+        body_label: '本文'
+        create_button: "作成"
+      create:
+        success: "掲示板を作成しました"
+        fail: "掲示板を作成できませんでした"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M"

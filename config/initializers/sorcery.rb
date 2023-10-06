@@ -88,19 +88,11 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.ca_file =
 
-  # Linkedin requires r_emailaddress scope to fetch user's email address.
-  # You can skip including the email field if you use an intermediary signup form. (using build_from method).
-  # The r_emailaddress scope is only necessary if you are using the create_from method directly.
-  #
   # config.linkedin.key = ""
   # config.linkedin.secret = ""
   # config.linkedin.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=linkedin"
-  # config.linkedin.user_info_mapping = {
-  #   first_name: 'localizedFirstName',
-  #   last_name:  'localizedLastName',
-  #   email:      'emailAddress'
-  # }
-  # config.linkedin.scope = "r_liteprofile r_emailaddress"
+  # config.linkedin.user_info_mapping = {first_name: "firstName", last_name: "lastName"}
+  # config.linkedin.scope = "r_basicprofile"
   #
   #
   # For information about XING API:
@@ -222,25 +214,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.line.key = ""
   # config.line.secret = ""
   # config.line.callback_url = "http://mydomain.com:3000/oauth/callback?provider=line"
-  # config.line.scope = "profile"
-  # config.line.bot_prompt = "normal"
-  # config.line.user_info_mapping = {name: 'displayName'}
 
-  
-  # For information about Discord API
-  # https://discordapp.com/developers/docs/topics/oauth2
-  # config.discord.key = "xxxxxx"
-  # config.discord.secret = "xxxxxx"
-  # config.discord.callback_url = "http://localhost:3000/oauth/callback?provider=discord"
-  # config.discord.scope = "email guilds"
-
-  # For information about Battlenet API
-  # https://develop.battle.net/documentation/guides/using-oauth
-  # config.battlenet.site = "https://eu.battle.net/" #See Website for other Regional Domains
-  # config.battlenet.key = "xxxxxx"
-  # config.battlenet.secret = "xxxxxx"
-  # config.battlenet.callback_url = "http://localhost:3000/oauth/callback?provider=battlenet"
-  # config.battlenet.scope = "openid"
   # --- user config ---
   config.user_config do |user|
     # -- core --
@@ -306,16 +280,6 @@ Rails.application.config.sorcery.configure do |config|
     # user.subclasses_inherit_config =
 
     # -- remember_me --
-    # change default remember_me_token attribute.
-    # Default: `:remember_me_token`
-    #
-    # user.remember_me_token_attribute_name =
-
-    # change default remember_me_token_expires_at attribute.
-    # Default: `:remember_me_token_expires_at`
-    #
-    # user.remember_me_token_expires_at_attribute_name =
-
     # How long in seconds the session length will be
     # Default: `60 * 60 * 24 * 7`
     #

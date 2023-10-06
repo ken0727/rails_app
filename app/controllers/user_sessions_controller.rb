@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-skip_before_action :require_login
+ 
 
   def new
   end
@@ -8,14 +8,17 @@ skip_before_action :require_login
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to root_path
+      flash[:success] = t('views.user_sessions.create.success')
+      redirect_back_or_to boards_path
     else
+      flash.now[:danger] = t('views.user_sessions.create.fail')
       render :new
     end
   end
 
   def destroy
     logout
+    flash[:danger] = t('views.user_sessions.destroy.success')
     redirect_to root_path
   end
 end
