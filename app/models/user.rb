@@ -27,5 +27,5 @@ class User < ApplicationRecord
   end
 
 has_many :bookmarks, dependent: :destroy
-  
+  has_many :bookmarked_boards, through: :bookmarks, source: :board
 end

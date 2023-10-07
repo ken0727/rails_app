@@ -1,0 +1,10 @@
+
+<% if board.bookmarked_by?(current_user) %>
+  <span class="float-right">
+    <%= link_to "★", board_bookmark_path(board, board_id: board.id), method: :delete, id: "js-bookmark-button-for-board-#{board.id}" %>
+  </span>
+<% else %>
+  <span class="float-right">
+    <%= link_to "☆", board_bookmarks_path(board, board_id: board.id), method: :post, id: "js-bookmark-button-for-board-#{board.id}" %>
+  </span>
+<% end %>
