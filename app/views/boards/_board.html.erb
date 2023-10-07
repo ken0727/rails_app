@@ -11,26 +11,33 @@
       </h4>
 
       <!-- ユーザーが作成した掲示板であるかの確認 -->
-      <% if board.user == current_user %>
-        <div class='mr10 float-right'>
-        <%= link_to edit_board_path(board), id: "edit-button-#{board.id}" do %>
-          <%= icon 'fa', 'pen' %>
-        <% end %>
+<% if board.user == current_user %>
+  <div class='mr10 float-right'>
+    <%= link_to edit_board_path(board), id: "edit-button-#{board.id}" do %>
+      <%= icon 'fa', 'pen' %>
+    <% end %>
 
-        <%= link_to board_path(board), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "delete-button-#{board.id}" do %>
-          <%= icon 'fas', 'trash' %>
-        <% end %>
-        </div>
-      <% end %>
+    <%= link_to board_path(board), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "delete-button-#{board.id}" do %>
+      <%= icon 'fas', 'trash' %>
+    <% end %>
+  </div>
+<% else %>
+  <% if board.bookmarked_by?(current_user) %>
+    <span class="float-right">
+      <%= link_to "★", board_bookmark_path(board, board_id: board.id), method: :delete %>
+    </span>
+  <% else %>
+    <span class="float-right">
+      <%= link_to "☆", board_bookmarks_path(board, board_id: board.id), method: :post %>
+    </span>
+  <% end %>
+<% end %>
+
 
       <!-- 投稿者の情報を別の行に表示 -->
       <div>
         <i class="far fa-user"></i>
         <%= board.user.full_name %>
-      </div>
-      
-      <!-- 投稿日時を別の行に表示 -->
-      <div>
         <i class="far fa-calendar"></i>
         <%= l board.created_at, format: :default %>
       </div>

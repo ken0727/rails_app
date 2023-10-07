@@ -25,4 +25,7 @@ class User < ApplicationRecord
      gravatar_id = Digest::MD5.hexdigest(email.downcase)
      "https://www.gravatar.com/avatar/#{gravatar_id}"
   end
+
+has_many :bookmarks, dependent: :destroy
+  
 end
