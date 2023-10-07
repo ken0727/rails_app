@@ -1,0 +1,33 @@
+<% content_for :title, "ブックマーク一覧 | RUNTEQ BOARD APP" %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <!-- 検索フォーム -->
+      <form>
+        <div class="input-group mb-3"><input class="form-control" placeholder="検索ワード" type="search"/>
+          <div class="input-group-append"><input type="submit" value="検索" class="btn btn-primary"/></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- 掲示板一覧 -->
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <% if @bookmarked_boards.any? %>
+        <% @bookmarked_boards.each do |board| %>
+          <div class="col-sm-12 col-lg-4 mb-3">
+            <!-- パーシャルを呼び出し、ブックマークした掲示板を表示 -->
+            <%= render partial: 'boards/board', locals: { board: board } %>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= t("views.bookmarks.index.nothing") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+

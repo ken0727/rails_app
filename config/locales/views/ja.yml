@@ -58,6 +58,9 @@ ja:
     shared:
       _before_login_header:
         login_link: 'ログイン'
+    bookmarks:
+      index:
+        nothing: "ブックマーク中の掲示板がありません"
     boards:
       update:
         success: "掲示板を更新しました"
