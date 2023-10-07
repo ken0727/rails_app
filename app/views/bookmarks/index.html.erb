@@ -1,0 +1,14 @@
+
+<h1>ブックマーク一覧</h1>
+
+<% if @bookmarked_boards.any? %>
+  <ul>
+    <% @bookmarked_boards.each do |board| %>
+      <li>
+        <%= link_to board.title, board_path(board) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>ブックマークがありません。</p>
+<% end %>

@@ -86,6 +86,6 @@ ja:
       create:
         success: "掲示板を作成しました"
         fail: "掲示板を作成できませんでした"
-    time:
-      formats:
-        default: "%Y/%m/%d %H:%M"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
