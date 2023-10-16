@@ -19,7 +19,7 @@
         <% @bookmarked_boards.each do |board| %>
           <div class="col-sm-12 col-lg-4 mb-3">
             <!-- パーシャルを呼び出し、ブックマークした掲示板を表示 -->
-            <%= render partial: 'boards/board', locals: { board: board } %>
+            <%= render partial: 'boards/board', locals: { board: board } ,remote: true%>
           </div>
         <% end %>
       <% else %>
@@ -28,6 +28,5 @@
     </div>
   </div>
 </div>
-
 
 

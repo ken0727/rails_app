@@ -1,2 +1,6 @@
 
-<%= link_to "★", board_bookmark_path(board, board_id: board.id), method: :delete %>
+<%= link_to "★", 
+board_bookmark_path(board, board.bookmarks.find_by(user_id: current_user.id)), 
+                    method: :delete, 
+                    remote: true, 
+                    id: "js-bookmark-button-for-board-#{board.id}" %>
