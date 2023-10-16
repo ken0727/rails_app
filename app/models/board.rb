@@ -11,7 +11,11 @@ validates :body, presence: true, length: { maximum: 65535 }
   has_many :bookmarks, dependent: :destroy
   has_many :users_who_bookmarked, through: :bookmarks, source: :user
 
+  #   def bookmarked_by?(user)
+  #   bookmarks.where(user_id: user).exists?
+  # end
+
     def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists?
+    user.bookmarked_boards.include?(self)
   end
 end
