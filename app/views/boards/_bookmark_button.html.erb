@@ -4,6 +4,6 @@
   </span>
 <% else %>
   <span class="float-right">
-    <%= link_to "☆", board_bookmarks_path(board, board_id: board.id), method: :post, remote: true, id: "js-bookmark-button-for-board-#{board.id}" %>
+    <%= link_to "☆", board_bookmarks_path(board), method: :post, remote: true, id: "js-bookmark-button-for-board-#{board.id}" %>
   </span>
 <% end %>
