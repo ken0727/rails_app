@@ -11,7 +11,6 @@ def create
 
   bookmark.save
   respond_to do |format|
-    puts "Request format: #{request.format.symbol}"
     format.js # ブックマーク成功時のJavaScriptレスポンスを返す
   end
   
@@ -24,11 +23,11 @@ def destroy
     bookmark.present?
     @board = bookmark.board
     bookmark.destroy
-  
+
   respond_to do |format|
-    
     format.js # ブックマーク解除用のJavaScriptレスポンスを返す
   end
+
 end
 
 end

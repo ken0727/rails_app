@@ -1,0 +1,51 @@
+
+<% if comment.present? %>
+
+  <tr id="comment-<%= comment.id %>">
+  <td style="width: 60px">
+  <!-- アバター -->
+  <img class="rounded-circle" src="<%= comment.user.avatar_url %>" width="50" height="50" />
+  </td>
+  <td>
+  <!-- 姓名 -->
+  <h3 class="small"><%= comment.user.full_name %></h3>
+  <!-- コメント内容 -->
+  <div id="js-comment-<%= comment.id %>">
+  <p><%= comment.body %></p>
+  </div>
+
+  <div class="text-right">
+      <% if comment.user == current_user %> <!-- ログインユーザーがコメントの投稿者であるかを確認 -->
+      <!-- 編集ボタン -->
+        <%= link_to "#", title: "編集" do %>
+        <i class="fa fa-edit"></i>
+        <% end %>
+
+      <!-- 削除ボタン -->
+      <%= link_to board_comment_path(comment.board,comment) , 
+      method: :delete, 
+      remote: true,
+      class: "js-delete-comment-button",
+      data: { confirm: "本当に削除しますか？" }, 
+      title: "削除" do %>
+      <i class="fa fa-trash"></i>
+      <% end %>
+  </div>
+
+  <% end %>
+  </div>
+
+  <div style="display: none;">
+  <textarea class="form-control mb-1"><%= comment.body %></textarea>
+  <button class="btn btn-light">キャンセル</button>
+  <button class="btn btn-success">更新</button>
+  </div>
+  </td>
+  </tr>
+
+
+<% end %>
+
+
+
+

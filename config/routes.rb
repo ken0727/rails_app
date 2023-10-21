@@ -13,7 +13,7 @@ root 'static_pages#top'
   resources :boards do
   resources :comments
   resources :bookmarks, only: %i[create destroy]
-
+    get "load_comments", on: :member
   end
   
 end
