@@ -1,9 +1,14 @@
 class BookmarksController < ApplicationController
 
-  def index 
-    @boards = Board.all
-    @bookmarked_boards = current_user.bookmarked_boards
-  end
+def index
+  @boards = Board.all
+
+  # ユーザーがブックマークしたボードを取得
+  bookmarked_boards = current_user.bookmarked_boards
+
+  # ページネーションを適用
+  @bookmarked_boards = bookmarked_boards.page(params[:page])
+end
 
 def create
   @board = Board.find(params[:board_id])

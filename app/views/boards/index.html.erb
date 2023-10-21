@@ -26,6 +26,9 @@
           <p><%= t("views.boards.index.nothing") %></p>
         <% end %>
       </div>
+      <!-- ページネーション -->
+    <%= paginate @boards, theme: 'bootstrap' %>
+
     </div>
   </div>
 </div>
