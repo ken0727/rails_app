@@ -26,6 +26,8 @@
         <p><%= t("views.bookmarks.index.nothing") %></p>
       <% end %>
     </div>
+      <!-- ページネーション -->
+      <%= paginate @bookmarked_boards, theme: 'bootstrap' %>
   </div>
 </div>
 

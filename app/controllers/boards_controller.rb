@@ -5,7 +5,15 @@ class BoardsController < ApplicationController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
-    @boards = Board.all
+      # params[:page] が存在するかどうかを確認
+    if params[:page].present?
+      @current_page = params[:page].to_i
+    else
+      # パラメータが提供されていない場合、デフォルトのページ番号を設定
+      @current_page = 1
+    end
+    # ページネーションを適用してデータを取得
+    @boards = Board.page(@current_page)
   end
 
   def new

@@ -40,6 +40,8 @@ gem 'rails-i18n', '5.1.3'
 gem "draper"
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

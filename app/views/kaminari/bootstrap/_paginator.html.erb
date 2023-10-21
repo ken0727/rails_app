@@ -1,0 +1,24 @@
+<nav>
+  <ul class="pagination">
+    <% if current_page > 1 %>
+      <li class="page-item">
+        <%= link_to 'Previous', url_for(params.permit(:page).merge(page: current_page - 1)), class: 'page-link' %>
+      </li>
+    <% end %>
+    
+    <% if total_pages > 1 %>
+      <% (1..total_pages).each do |page| %>
+        <li class="page-item<%= ' active' if current_page == page %>">
+          <%= link_to page, url_for(params.permit(:page).merge(page: page)), class: 'page-link' %>
+        </li>
+      <% end %>
+    <% end %>
+    
+    <% if current_page < total_pages %>
+      <li class="page-item">
+        <%= link_to 'Next', url_for(params.permit(:page).merge(page: current_page + 1)), class: 'page-link' %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
+
